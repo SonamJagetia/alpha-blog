@@ -15,20 +15,17 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    debugger
     #render plain: params[:article].inspect
     @article = Article.new(article_params)
     @article.user = current_user
     #@article.save
     #redirect_to article_path(@article)    #This is not fulfill our validations so we want to check conditions
     if @article.save
-      #do something
       flash[:success] = "Article was successfully created"
       redirect_to article_path(@article)
     else
       render 'new'   # or render :new
     end
-
   end
 
   def update
