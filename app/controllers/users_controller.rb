@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to the Protovo Blog #{@user.username}"
       redirect_to articles_path
     else
-    ender 'new'
+    render 'new'
     end
   end
 
@@ -34,7 +34,6 @@ class UsersController < ApplicationController
 
   def show
     @user_articles = @user.articles.paginate(page: params[:page], per_page: 2)
-
   end
 
   private
